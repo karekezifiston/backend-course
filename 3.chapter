@@ -1,0 +1,83 @@
+Awesome! Now that we’ve created a basic Node.js server, let’s make things simpler with Express.js.
+
+Express is a lightweight framework for Node.js that makes it much easier to build servers and handle requests.
+
+3. Creating a Simple Server with Express
+Express provides a more organized way to handle routes (URLs) and responses compared to using plain Node.js. Let’s set it up and build a simple Express server.
+
+Step 1: Install Express
+Install Express:
+
+In your terminal, navigate to your project folder (if you’re not already there).
+
+Run this command to install Express:
+
+bash
+Copy code
+npm install express
+Verify Installation:
+
+After installing, you’ll see a new node_modules folder and an entry for express in your package.json file. This means Express is ready to use.
+Step 2: Set Up an Express Server
+Now, let’s modify the server.js file to use Express.
+
+Update server.js with Express Code:
+
+Open server.js and replace the content with this code:
+
+javascript
+Copy code
+const express = require('express');
+const app = express();  // Creates an instance of an Express app
+
+// Define a simple route
+app.get('/', (req, res) => {
+  res.send('Hello, World! Welcome to my Express server.');
+});
+
+// Start the server on port 3000
+app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
+});
+Explanation:
+
+const express = require('express');: We import Express.
+const app = express();: Creates an Express app instance.
+app.get('/', (req, res) => { ... });: Defines a route that listens for GET requests to the “root” URL (/). When someone visits http://localhost:3000, the server will respond with "Hello, World! Welcome to my Express server."
+app.listen(3000, () => { ... });: Starts the server, listening on port 3000.
+Run the Express Server:
+
+In the terminal, run:
+
+bash
+Copy code
+node server.js
+You should see Server is running on http://localhost:3000.
+
+Test Your Server:
+
+Open a browser and go to http://localhost:3000.
+You should see the message "Hello, World! Welcome to my Express server."
+Step 3: Add Another Route
+Let’s add one more route to see how easy it is to handle multiple URLs with Express.
+
+In server.js, add another route below the first route:
+
+javascript
+Copy code
+app.get('/about', (req, res) => {
+  res.send('This is the About page of my Express server.');
+});
+Explanation:
+
+app.get('/about', ...): This defines a new route at /about. When someone visits http://localhost:3000/about, the server responds with "This is the About page of my Express server."
+Save and Restart:
+
+Save the file and, if needed, restart the server by pressing Ctrl+C in your terminal to stop it, then running node server.js again.
+Test the New Route:
+
+Visit http://localhost:3000/about in your browser.
+You should see "This is the About page of my Express server."
+Recap
+You’ve set up an Express server that handles requests to different routes.
+Express makes it easy to add new routes, which will become useful as we build more complex applications.
