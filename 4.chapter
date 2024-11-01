@@ -1,0 +1,103 @@
+4. Introduction to REST APIs and CRUD Operations
+A REST API is a way to allow different software (like a frontend app and a backend server) to communicate by sending and receiving data.
+
+In our server, REST API routes will let us perform CRUD operations on data. CRUD stands for Create, Read, Update, and Delete. Each of these operations is a way to interact with data stored on the server.
+
+What are REST APIs?
+REST (Representational State Transfer) is a set of rules for designing APIs. When you create a REST API, you make it easy for the frontend (or other applications) to talk to your backend server using HTTP methods like GET, POST, PUT, and DELETE.
+
+Each HTTP method performs one of the CRUD operations:
+
+GET – Retrieve data (Read)
+POST – Add new data (Create)
+PUT/PATCH – Update existing data (Update)
+DELETE – Remove data (Delete)
+Using these methods and routes, you can build an API to handle all kinds of actions with your data.
+
+CRUD Operations Explained with Examples
+Let’s break down each operation and see how we’d create routes for them in Express.
+
+1. Create (POST)
+To add new data (like adding a new product to a list), we use a POST request.
+
+Example route:
+
+javascript
+Copy code
+app.post('/products', (req, res) => {
+  // Code to add a new product
+  res.send('Product added');
+});
+2. Read (GET)
+To retrieve data (like viewing a list of products), we use a GET request.
+
+Example route:
+
+javascript
+Copy code
+app.get('/products', (req, res) => {
+  // Code to get a list of products
+  res.send('List of products');
+});
+3. Update (PUT or PATCH)
+To change existing data (like updating a product’s price), we use PUT or PATCH.
+
+Example route:
+
+javascript
+Copy code
+app.put('/products/:id', (req, res) => {
+  // Code to update a specific product using its ID
+  res.send(`Product with id ${req.params.id} updated`);
+});
+Here, :id represents a product ID, allowing us to update a specific product.
+4. Delete (DELETE)
+To remove data (like deleting a product), we use DELETE.
+
+Example route:
+
+javascript
+Copy code
+app.delete('/products/:id', (req, res) => {
+  // Code to delete a specific product using its ID
+  res.send(`Product with id ${req.params.id} deleted`);
+});
+Example of a REST API with CRUD Routes
+Let’s create a simple REST API for “products” in an online store. Here’s how our server code might look with Express:
+
+javascript
+Copy code
+const express = require('express');
+const app = express();
+
+app.use(express.json()); // Middleware to parse JSON data
+
+// CREATE - Add a new product
+app.post('/products', (req, res) => {
+  res.send('Product added');
+});
+
+// READ - Get a list of all products
+app.get('/products', (req, res) => {
+  res.send('List of products');
+});
+
+// UPDATE - Update a product by ID
+app.put('/products/:id', (req, res) => {
+  res.send(`Product with id ${req.params.id} updated`);
+});
+
+// DELETE - Delete a product by ID
+app.delete('/products/:id', (req, res) => {
+  res.send(`Product with id ${req.params.id} deleted`);
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
+});
+Each route does the following:
+
+Handles a specific CRUD operation.
+Uses a different HTTP method (POST, GET, PUT, DELETE).
+Interacts with different URLs to manage “products.”
