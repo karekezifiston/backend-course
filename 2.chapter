@@ -1,0 +1,59 @@
+1. Install Node.js and npm
+Node.js: The runtime that executes JavaScript on the server.
+npm: Node Package Manager, which allows us to install additional tools and libraries.
+You can download Node.js (which includes npm) from nodejs.org. I recommend choosing the LTS version (Long-Term Support) for stability.
+
+2. Initialize a New Project
+Once Node.js and npm are installed, you can create a new project.
+
+Create a Folder for Your Project:
+
+Create a new folder where you want your project files to go (e.g., my-first-server).
+Initialize a Node Project:
+
+Open a terminal in that folder.
+Type npm init -y and press Enter. This creates a package.json file, which keeps track of the packages and dependencies in your project.
+3. Create Your First Node Server
+Let’s create a very basic server to understand how it works.
+
+Create a File Named server.js:
+
+Inside your project folder, create a file called server.js. This file will contain the code to start your server.
+Write Code for a Simple Server:
+
+In server.js, add the following code:
+
+javascript
+
+const http = require('http');
+
+// Define a server that responds to requests
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello, World! This is my first Node server.');
+});
+
+// Start the server on port 3000
+server.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
+});
+What this code does:
+
+It creates a basic server using Node’s built-in http module.
+The server listens for requests on port 3000.
+When someone visits http://localhost:3000, the server responds with "Hello, World! This is my first Node server."
+Run Your Server:
+
+In your terminal, run this command:
+
+bash
+Copy code
+node server.js
+If everything is working, you’ll see Server is running on http://localhost:3000 in your terminal.
+
+Test Your Server:
+
+Open a browser and go to http://localhost:3000.
+You should see the message "Hello, World! This is my first Node server."
+That’s it! You’ve created a basic server with Node.js.
+
