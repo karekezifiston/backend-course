@@ -1,0 +1,55 @@
+1. What is Backend Development?
+
+Backend development is all about the “behind-the-scenes” part of a web application. Think of it as the engine of 
+a car—everything that makes the car run but isn’t visible to the driver. In a web app:
+
+Frontend is what users see and interact with (buttons, images, text).
+Backend is where data is stored, processed, and managed (the hidden functionality that supports what users see).
+Backend development involves:
+
+Creating a server (a program that listens for requests and responds).
+Managing databases (where data is stored, like user info).
+Ensuring security, authentication, and access control.
+2. Overview of Server-Client Architecture
+Think of a website like a restaurant:
+
+Client (the web browser, like Chrome or Firefox) is the customer who places an order.
+Server (the backend) is the kitchen, where the meal (data) is prepared and sent back to the customer.
+In web development:
+
+The client (your browser or mobile app) sends requests to the server.
+The server processes those requests, retrieves or updates data, and sends a response back to the client.
+This setup is called Client-Server Architecture.
+
+3. Introduction to REST APIs and CRUD Operations
+What is an API?
+An API (Application Programming Interface) is a way for different programs to talk to each other. When you connect
+the frontend to the backend, the API is like the “waiter” that delivers orders from the client to the server and brings responses back.
+
+What is a REST API?
+REST (Representational State Transfer) is a style for building APIs that allows different apps to communicate
+in a simple, predictable way. REST APIs work with “endpoints” (URLs) and HTTP methods (like GET, POST).
+
+CRUD Operations
+CRUD represents the basic actions you can perform with data:
+
+Create: Add new data (e.g., a new user)
+Read: Get existing data (e.g., list of products)
+Update: Modify existing data (e.g., change user password)
+Delete: Remove data (e.g., delete a product)
+Each of these operations matches an HTTP method:
+
+POST = Create
+GET = Read
+PUT or PATCH = Update
+DELETE = Delete
+So, a REST API with CRUD operations is a way to create, read, update, and delete data in a backend.
+
+4. Key Differences Between Frontend and Backend Development
+Frontend Development: Deals with the “look and feel” of a website. Technologies often include HTML, CSS, and 
+JavaScript (React, Angular, etc.). It’s user-facing.
+
+Backend Development: Manages data, security, and business logic. Technologies here include Node.js, Express, and
+databases like MongoDB. It’s server-facing and usually “invisible” to users.
+
+Frontend is like decorating and designing the restaurant, while backend is like setting up the kitchen and inventory so it all functions smoothly.
