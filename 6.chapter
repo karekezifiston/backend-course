@@ -1,0 +1,102 @@
+
+6. Using the Product Model in CRUD Routes
+We'll go through each CRUD operation again, but this time we’ll use the Product model to store, retrieve, update, and delete data in MongoDB.
+
+Step 1: CREATE – Add a New Product
+We’ll use the Product model to create and save a new product in the database.
+
+Define the Route in server.js:
+
+javascript
+Copy code
+app.post('/products', async (req, res) => {
+  try {
+    const product = new Product(req.body); // Create a new product using the data in the request
+    await product.save(); // Save the product to MongoDB
+    res.status(201).send('Product added'); // Send back a response
+  } catch (error) {
+    res.status(400).send(error.message); // Handle any errors
+  }
+});
+How It Works:
+
+new Product(req.body): This creates a new product with the data sent in the request body (e.g., { name: "Apple", price: 1.00, inStock: true }).
+await product.save(): This saves the product in MongoDB.
+Step 2: READ – Get All Products
+We’ll create a route to retrieve all products from the database.
+
+Define the Route in server.js:
+
+javascript
+Copy code
+app.get('/products', async (req, res) => {
+  try {
+    const products = await Product.find(); // Retrieve all products from MongoDB
+    res.json(products); // Send the products as JSON
+  } catch (error) {
+    res.status(500).send(error.message); // Handle any errors
+  }
+});
+How It Works:
+
+Product.find(): This method fetches all products from the database.
+res.json(products): Sends the list of products back as a JSON response.
+Step 3: UPDATE – Update a Product by ID
+We’ll update an existing product in the database by its ID.
+
+Define the Route in server.js:
+
+javascript
+Copy code
+app.put('/products/:id', async (req, res) => {
+  try {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(product); // Send back the updated product
+  } catch (error) {
+    res.status(404).send('Product not found'); // Handle errors if product isn't found
+  }
+});
+How It Works:
+
+req.params.id: Retrieves the id parameter from the URL.
+Product.findByIdAndUpdate(...): Finds the product by its ID and updates it with the new data from req.body.
+Step 4: DELETE – Delete a Product by ID
+We’ll delete a product from the database by its ID.
+
+Define the Route in server.js:
+
+javascript
+Copy code
+app.delete('/products/:id', async (req, res) => {
+  try {
+    await Product.findByIdAndDelete(req.params.id); // Delete the product by ID
+    res.send('Product deleted'); // Send confirmation
+  } catch (error) {
+    res.status(404).send('Product not found'); // Handle errors if product isn't found
+  }
+});
+How It Works:
+
+Product.findByIdAndDelete(req.params.id): Finds and deletes the product with the given ID.
+Summary of the CRUD Routes
+Here’s what each route does in our API:
+
+POST /products: Creates a new product.
+GET /products: Retrieves all products.
+PUT /products/:id: Updates a product by ID.
+DELETE /products/:id: Deletes a product by ID.
+Each route interacts with MongoDB to store, update, retrieve, or delete product data.
+
+This is your basic CRUD API with MongoDB, Express, and Node.js! You can now add data to your database, view it, update it, and delete it through these routes.
+
+Let me know if you’d like to try these steps or if you need any clarification on each part.
+
+
+
+
+
+
+
+
+
+
